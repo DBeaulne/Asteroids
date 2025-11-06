@@ -5,6 +5,7 @@ import pygame
 from constants import *
 from logger import log_state
 from player import Player
+from asteroidfield import AsteroidField
 
 
 def main():
@@ -15,14 +16,18 @@ def main():
     dt = 0                          # create a variable to store the delta time
 
     # Groups
+    asteroids = pygame.sprite.Group()
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
     Player.containers = (updatable, drawable)
+    Asteroid.containers = (asteroids, updatable, drawable)
+    AsteroidField.containers = (updatable)
 
     # initial player positioning
     player_pos_x = SCREEN_WIDTH / 2
     player_pos_y = SCREEN_HEIGHT / 2
     player = Player(player_pos_x, player_pos_y)
+    asteroid_field = AsteroidField()
     
 
 
