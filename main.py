@@ -3,6 +3,8 @@
 # throughout this file
 import pygame
 from constants import *
+from player import Player
+
 
 def main():
     pygame.init()
@@ -10,12 +12,16 @@ def main():
     clock = pygame.time.Clock()     # create a clock object
     dt = 0                          # create a variable to store the delta time
 
+    player_pos_x = SCREEN_WIDTH / 2
+    player_pos_y = SCREEN_HEIGHT / 2
+    player = Player(player_pos_x, player_pos_y)
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
         screen.fill("black")
+        player.draw(screen)
         pygame.display.flip()
 
         # limit the frame rate to 60 fps
