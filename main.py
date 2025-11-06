@@ -3,6 +3,7 @@
 # throughout this file
 import pygame
 from constants import *
+from logger import log_state
 from player import Player
 
 
@@ -20,6 +21,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+        log_state()
         screen.fill("black")
         player.update(dt)
         player.draw(screen)

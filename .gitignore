@@ -9,3 +9,4 @@ wheels/
 # Virtual environments
 .venv
 sandbox.py
+game_state.jsonl
