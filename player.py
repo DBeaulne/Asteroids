@@ -1,6 +1,6 @@
 import pygame
 from circleshape import CircleShape
-from constants import PLAYER_RADIUS
+from constants import *
 
 # Player class that inherits from CircleShape
 class Player(CircleShape):
@@ -18,5 +18,4 @@ class Player(CircleShape):
       return [a, b, c]
 
   def draw(self, screen):
-    points = self.triangle()
-    pygame.draw.polygon(screen, "white", points, width=2)
+    pygame.draw.polygon(screen, "white", self.triangle(), width=2)
