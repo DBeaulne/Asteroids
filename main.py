@@ -9,6 +9,7 @@ from player import Player
 
 def main():
     pygame.init()
+
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()     # create a clock object
     dt = 0                          # create a variable to store the delta time
@@ -18,10 +19,11 @@ def main():
     player = Player(player_pos_x, player_pos_y)
 
     while True:
+        log_state()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        log_state()
+        
         screen.fill("black")
         player.update(dt)
         player.draw(screen)
