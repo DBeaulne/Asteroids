@@ -35,6 +35,7 @@ def main():
         updatable.update(dt)
         
         screen.fill("black")
+        
         for obj in drawable:
             obj.draw(screen)
         
