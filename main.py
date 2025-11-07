@@ -8,28 +8,32 @@ from logger import log_state, log_event
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from shot import Shot
 
 
 def main():
     pygame.init()
-
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()     # create a clock object
     dt = 0                          # create a variable to store the delta time
 
     # Groups
-    asteroids = pygame.sprite.Group()
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
-    Player.containers = (updatable, drawable)
+    asteroids = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
+
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = (updatable)
+    asteroid_field = AsteroidField()
+    Shot.containers = (shots, updatable, drawable)
+    
+    Player.containers = (updatable, drawable)
 
     # initial player positioning
     player_pos_x = SCREEN_WIDTH / 2
     player_pos_y = SCREEN_HEIGHT / 2
     player = Player(player_pos_x, player_pos_y)
-    asteroid_field = AsteroidField()
     
 
 
@@ -40,8 +44,9 @@ def main():
                 return
         
         updatable.update(dt)
+
         for asteroid in asteroids:
-            if asteroid.collision(player):
+            if asteroid.collides_with(player):
                 log_event("player_hit")
                 print("Game over!")
                 sys.exit()
