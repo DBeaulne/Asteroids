@@ -10,3 +10,4 @@ wheels/
 .venv
 sandbox.py
 game_state.jsonl
+game_events.jsonl
